@@ -33,6 +33,44 @@
   <link href="corporate-ui-dashboard-main/assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="corporate-ui-dashboard-main/assets/css/corporate-ui-dashboard.css?v=1.0.0" rel="stylesheet" />
+  <style>
+    .typed-text {
+      display: inline-block;
+    }
+  
+    .welcome-text {
+      font-weight: bold;
+      font-size: 2em;
+    }
+  
+    /* Animasi ketik teks */
+    .typed-text::after {
+      content: "";
+      display: inline-block;
+      width: 0;
+      overflow: hidden;
+      border-right: 0.15em solid orange; /* Ganti warna dengan warna yang sesuai */
+      animation: typing 3s steps(30, end), blink-caret 0.5s step-end infinite;
+    }
+  
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+      to {
+        width: 100%;
+      }
+    }
+  
+    @keyframes blink-caret {
+      from, to {
+        border-color: transparent;
+      }
+      50% {
+        border-color: orange; /* Ganti warna dengan warna yang sesuai */
+      }
+    }
+  </style>
 </head>
 
 <body class="">
@@ -53,7 +91,7 @@
             <div class="col-xl-4 col-md-6 d-flex flex-column mx-auto">
               <div class="card card-plain mt-8">
                 <div class="card-header pb-0 text-left bg-transparent">
-                  <h3 class="font-weight-black text-dark display-6">Welcome back</h3>
+                  <h3 class="welcome-text"><span class="typed-text"></span></h3>
                   <p class="mb-0">Hello Silahkan masukan Email dan Password anda</p>
                 </div>
                 <div id="error-alert" class="alert alert-danger mt-3" style="display: none;">
@@ -108,6 +146,42 @@
       return true;
     }
   </script>
+
+<script>
+  const words = ["Accueillir", "Welcome", "Dobro Pozhalovat", "Irasshaimase", "Mabuhay", "欢迎", "환영"];
+  let wordIndex = 0;
+  let textIndex = 0;
+  let isDeleting = false;
+  let typedText = document.querySelector('.typed-text');
+
+  function type() {
+    const currentWord = words[wordIndex];
+    if (isDeleting) {
+      typedText.textContent = currentWord.substring(0, textIndex - 1);
+    } else {
+      typedText.textContent = currentWord.substring(0, textIndex + 1);
+    }
+
+    if (!isDeleting && textIndex === currentWord.length) {
+      isDeleting = true;
+      setTimeout(function () {
+        type();
+      }, 1000);
+    } else if (isDeleting && textIndex === 0) {
+      isDeleting = false;
+      wordIndex = (wordIndex + 1) % words.length;
+      setTimeout(function () {
+        type();
+      }, 500);
+    } else {
+      setTimeout(type, isDeleting ? 50 : 100);
+    }
+    textIndex = isDeleting ? textIndex - 1 : textIndex + 1;
+  }
+
+  // Memulai animasi
+  type();
+</script>
 
   <!--   Core JS Files   -->
   <script src="corporate-ui-dashboard-main/assets/js/core/popper.min.js"></script>
