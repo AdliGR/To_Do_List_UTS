@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($user) {
         $storedPassword = $user['password']; 
         if (password_verify($password, $storedPassword)) {
-            header("Location: index.html");
+            header("Location: main.html");
             exit();
         } else {
             echo "<script>alert('Email atau password salah. Silakan coba lagi.');</script>";
