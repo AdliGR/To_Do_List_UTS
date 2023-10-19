@@ -1,7 +1,8 @@
 <?php
 include 'koneksi.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") 
+{
     $email = $_POST['email'];
     $password = $_POST['password'];
 
@@ -11,18 +12,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute();
     $user = $stmt->fetch();
 
-    if ($user) {
+    if ($user) 
+    {
         $storedPassword = $user['password']; 
-        if (password_verify($password, $storedPassword)) {
-            header("Location: index.html");
+        if (password_verify($password, $storedPassword)) 
+        {
+
+            session_start();
+            $_SESSION['username'] = $user['username'];
+
+            header("Location: index.php");
             exit();
-        } else {
+        } 
+        else 
+        {
             echo "<script>alert('Email atau password salah. Silakan coba lagi.');</script>";
-            echo "<script>window.location.href = 'login.html';</script>";
+            echo "<script>window.location.href = 'login.php';</script>";
         }
-    } else {
+    } 
+    else 
+    {
         echo "<script>alert('Email atau password salah. Silakan coba lagi.');</script>";
-        echo "<script>window.location.href = 'login.html';</script>";
+        echo "<script>window.location.href = 'login.php';</script>";
     }
 }
 ?>

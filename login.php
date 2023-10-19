@@ -115,7 +115,7 @@
                 <div class="card-footer text-center pt-0 px-lg-2 px-1">
                   <p class="mb-4 text-xs mx-auto">
                     Belom punya akun?
-                    <a href="register.html" class="text-dark font-weight-bold">Sign up</a>
+                    <a href="register.php" class="text-dark font-weight-bold">Sign up</a>
                   </p>
                 </div>
               </div>
