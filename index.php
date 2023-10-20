@@ -58,12 +58,28 @@
               <h3 class="font-weight-bold mb-0">Hello, Noah</h3>
               <p class="mb-0">nama user, Your to do list</p>
             </div>
+            <div class="d-md-flex align-items-center mb-3 mx-2">
+              <a href="addTask.php">
+              <button type="button" class="btn btn-primary">Add Task</button>
+              </a>
+            </div>
           </div>
         </div>
       </div>
       <hr>
       <!-- To Do List di bawah sini-->
-      
+      <div class="container">
+        <table class="table table-bordered text-center">
+            <thead>
+                <tr>
+                    <th>Task</th>
+                    <th>Done</th>
+                    <th>Progress</th>
+                </tr>
+            </thead>
+          <?php include 'listTask.php'; ?>
+        </table>
+      </div>
       <!-- To Do List sampai sini  -->
       <hr>
       <footer class="footer pt-3  ">
@@ -71,7 +87,7 @@
           <div class="row align-items-center justify-content-lg-between">
             <div class="col-lg-6 mb-lg-0 mb-4">
               <div class="copyright text-center text-xs text-muted text-lg-start">
-                Kelompiok 2
+                Kelompok 2
               </div>
             </div>
             <div class="col-lg-6">
@@ -80,7 +96,7 @@
                     Shyehan Rafael
                 </li>
                 <li class="nav-item">
-                  <a href="https://www.creative-tim.com/presentation" class="nav-link text-xs text-muted" target="_blank">About Us</a>
+                    Dirsya Arrosyid Arsyad
                 </li>
                 <li class="nav-item">
                   <a href="https://www.creative-tim.com/blog" class="nav-link text-xs text-muted" target="_blank">Blog</a>
