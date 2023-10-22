@@ -27,13 +27,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         else 
         {
             echo "<script>alert('Email atau password salah. Silakan coba lagi.');</script>";
-            echo "<script>window.location.href = 'login.php';</script>";
+            echo "<script>window.location.href = 'index.php';</script>";
         }
     } 
     else 
     {
         echo "<script>alert('Email atau password salah. Silakan coba lagi.');</script>";
-        echo "<script>window.location.href = 'login.php';</script>";
+        echo "<script>window.location.href = 'index.php';</script>";
     }
 }
 ?>

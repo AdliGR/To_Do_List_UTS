@@ -1,17 +1,10 @@
-<!--
-=========================================================
-* Corporate UI - v1.0.0
-=========================================================
+<?php
+session_start();
+if (isset($_POST['username'])) {
+    $_SESSION['username'] = $_POST['username'];
+}
+?>
 
-* Product Page: https://www.creative-tim.com/product/corporate-ui
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,8 +48,8 @@
         <div class="col-md-12">
           <div class="d-md-flex align-items-center mb-3 mx-2">
             <div class="mb-md-0 mb-3">
-              <h3 class="font-weight-bold mb-0">Hello, Noah</h3>
-              <p class="mb-0">nama user, Your to do list</p>
+              <h3 class="font-weight-bold mb-0">Hello, <?php echo $_SESSION['username']; ?></h3>
+              <p class="mb-0"><?php echo $_SESSION['username']; ?>, Your to do list</p>
             </div>
             <div class="d-md-flex align-items-center mb-3 mx-2">
               <a href="addTask.php">
