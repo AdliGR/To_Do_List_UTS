@@ -7,6 +7,26 @@ if (!isset($_SESSION['username'])) {
 }
 ?>
 
+<?php
+        require('koneksi.php');
+
+        $task_id = $_GET['id'];
+
+        $sql = "SELECT name_task, progress FROM task WHERE id = :id";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':id', $task_id);
+        $stmt->execute();
+        $result = $stmt->fetch();
+
+        if ($result) {
+            $task_name = $result['name_task'];
+            $progress = $result['progress'];
+        } else {
+            echo "Tidak dapat menemukan tugas dengan ID yang diberikan.";
+            exit;
+        }
+        ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,42 +65,28 @@ if (!isset($_SESSION['username'])) {
     </nav>
     <!-- End Navbar -->
     <!-- Main Content -->
-    <div class="container-fluid py-4 px-5">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="d-md-flex align-items-center mb-3 mx-2">
-            <div class="mb-md-0 mb-3">
-              <h3 class="font-weight-bold mb-0">Hello,<?php echo $_SESSION['username']; ?></h3>
-              <p class="mb-0"><?php echo $_SESSION['username']; ?>, Your to do list</p>
+    <div class="container">
+        <h1 class="mt-5 mb-3">Edit Task</h1>
+
+        <form action="edittask.php" method="post">
+            <input type="hidden" name="id" value="<?php echo $task_id; ?>">
+            <div class="form-group">
+                <label for="name_task">Name:</label>
+                <input type="text" name="name_task" class="form-control" value="<?php echo $task_name; ?>">
             </div>
-          </div>
-        </div>
-      </div>
-      <hr>
-      <!-- To Do List di bawah sini-->
-      <div class="">
-        <h1>Task List</h1>
-        <div class="d-md-flex align-items-center mb-3 mx-2">
-          <a href="addTask.php">
-            <button type="button" class="btn btn-primary">Add Task</button>
-          </a>
-        </div>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Task</th>
-                    <th>Done</th>
-                    <th>Progress</th>
-                    <th>Edit Task</th>
-                    <th>Delet Task</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                require('tasklist.php');
-                ?>
-            </tbody>
-        </table>
+
+            <!-- Opsi untuk progress -->
+            <div class="form-group">
+                <label for="progress">Progress:</label>
+                <select name="progress" class="form-control">
+                    <option value="Not Yet Started" <?php echo ($progress === "Not Yet Started") ? "selected" : ""; ?>>Not Yet Started</option>
+                    <option value="On Progress" <?php echo ($progress === "On Progress") ? "selected" : ""; ?>>On Progress</option>
+                    <option value="Complete" <?php echo ($progress === "Complete") ? "selected" : ""; ?>>Complete</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-3">Update Task</button>
+        </form>
     </div>
       <!-- To Do List sampai sini  -->
       <hr>
