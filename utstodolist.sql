@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 19, 2023 at 07:30 PM
+-- Generation Time: Oct 23, 2023 at 05:57 AM
 -- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- PHP Version: 8.1.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,22 +20,30 @@ SET time_zone = "+00:00";
 --
 -- Database: `utstodolist`
 --
-CREATE DATABASE IF NOT EXISTS `utstodolist` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `utstodolist`;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tasks`
+-- Table structure for table `task`
 --
 
-CREATE TABLE `tasks` (
+CREATE TABLE `task` (
   `id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
-  `task_text` varchar(255) NOT NULL,
-  `task_done` varchar(255) NOT NULL,
-  `progress_status` varchar(25) NOT NULL
+  `name_task` varchar(255) NOT NULL,
+  `task_status` tinyint(1) NOT NULL DEFAULT 0,
+  `progress` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `task`
+--
+
+INSERT INTO `task` (`id`, `username`, `name_task`, `task_status`, `progress`) VALUES
+(1, 'Shyehan Rafael', 'Menyapu', 1, 'Complete'),
+(2, 'sasa', 'Mengepel', 0, 'Not yet started'),
+(4, 'Shyehan Rafael', 'Beberes', 0, 'Not yet started'),
+(6, 'Shyehan Rafael', 'Mengerjakann PR', 0, 'On Progress');
 
 -- --------------------------------------------------------
 
@@ -65,9 +73,9 @@ INSERT INTO `user` (`id`, `username`, `email`, `password`) VALUES
 --
 
 --
--- Indexes for table `tasks`
+-- Indexes for table `task`
 --
-ALTER TABLE `tasks`
+ALTER TABLE `task`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -81,10 +89,10 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT for table `tasks`
+-- AUTO_INCREMENT for table `task`
 --
-ALTER TABLE `tasks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+ALTER TABLE `task`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user`

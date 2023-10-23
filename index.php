@@ -83,34 +83,40 @@ if (!isset($_SESSION['username'])) {
         </table>
     </div>
       <!-- To Do List sampai sini  -->
-      <hr>
-      <footer class="footer pt-3  ">
-        <div class="container-fluid">
-          <div class="row align-items-center justify-content-lg-between">
-            <div class="col-lg-6 mb-lg-0 mb-4">
-              <div class="copyright text-center text-xs text-muted text-lg-start">
-                <h6>Kelompok 2</h6>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-                <li class="nav-item">
-                    Shyehan Rafael
-                </li>
-                <li class="nav-item">
-                    Dirsya Arrosyid Arsyad
-                </li>
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com/blog" class="nav-link text-xs text-muted" target="_blank">Blog</a>
-                </li>
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com/license" class="nav-link text-xs pe-0 text-muted" target="_blank">License</a>
-                </li>
-              </ul>
-            </div>
+    <hr>
+    <footer class="footer py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mb-4 mx-auto text-center">
+            <a href="https://github.com/AdliGR" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+              Shyehan Rafael Adlinugroho
+            </a>
+            <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+              Dirsya Arrosyid Arsyad
+            </a>
+            <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+              Eliezer Raphael
+            </a>
+            <br>
+            <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+              David Moses Mantiri Kalesaran
+            </a>
+            <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+              Michael Vallent
+            </a>
           </div>
         </div>
-      </footer>
+        <div class="row">
+          <div class="col-8 mx-auto text-center mt-1">
+            <p class="mb-0 text-secondary">
+              <a href="https://github.com/AdliGR/To_Do_List_UTS">
+                <h5>Kelompok 2</h5>
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
     </div>
   </main>
   <div class="fixed-plugin">
