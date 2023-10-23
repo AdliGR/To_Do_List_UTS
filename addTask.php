@@ -28,6 +28,8 @@ if (!isset($_SESSION['username'])) {
     <link href="corporate-ui-dashboard-main/assets/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="corporate-ui-dashboard-main/assets/css/corporate-ui-dashboard.css?v=1.0.0" rel="stylesheet" />
+    <link href="https://cdn.rawgit.com/michalsnik/aos/2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.rawgit.com/michalsnik/aos/2.3.4/dist/aos.js"></script>
 </head>
 
     <!-- Navbar -->
@@ -61,11 +63,11 @@ if (!isset($_SESSION['username'])) {
       <div class="container">
         <h1 class="mt-4">Add Task</h1>
         <form action="addtask_proses.php" method="post" class="mt-3">
-            <div class="form-group">
+            <div class="form-group" data-aos="fade">
                 <label for="name_task">Task Name:</label>
                 <input type="text" class="form-control" id="name_task" name="name_task" required>
             </div>
-            <button type="submit" class="btn btn-success">Add Task</button>
+            <button type="submit" class="btn btn-success" data-aos="fade">Add Task</button>
               
         </form>
         </div>
@@ -106,7 +108,14 @@ if (!isset($_SESSION['username'])) {
     </footer>
     </div>
   </main>
-  
+  <!--  Script Tambahan   -->
+  <script>
+  AOS.init({
+    duration: 1000, 
+    once: true, 
+    mirror: false, 
+  });
+  </script>
   <!--   Core JS Files   -->
   <script src="corporate-ui-dashboard-main/assets/js/core/popper.min.js"></script>
   <script src="corporate-ui-dashboard-main/assets/js/core/bootstrap.min.js"></script>

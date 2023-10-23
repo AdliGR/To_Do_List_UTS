@@ -48,6 +48,8 @@ if (!isset($_SESSION['username'])) {
     <link href="corporate-ui-dashboard-main/assets/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="corporate-ui-dashboard-main/assets/css/corporate-ui-dashboard.css?v=1.0.0" rel="stylesheet" />
+    <link href="https://cdn.rawgit.com/michalsnik/aos/2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.rawgit.com/michalsnik/aos/2.3.4/dist/aos.js"></script>
 </head>
 
     <!-- Navbar -->
@@ -70,13 +72,13 @@ if (!isset($_SESSION['username'])) {
 
         <form action="edittask.php" method="post">
             <input type="hidden" name="id" value="<?php echo $task_id; ?>">
-            <div class="form-group">
+            <div class="form-group" data-aos="fade">
                 <label for="name_task">Name:</label>
                 <input type="text" name="name_task" class="form-control" value="<?php echo $task_name; ?>">
             </div>
 
             <!-- Opsi untuk progress -->
-            <div class="form-group">
+            <div class="form-group" data-aos="fade">
                 <label for="progress">Progress:</label>
                 <select name="progress" class="form-control">
                     <option value="Not Yet Started" <?php echo ($progress === "Not Yet Started") ? "selected" : ""; ?>>Not Yet Started</option>
@@ -85,12 +87,12 @@ if (!isset($_SESSION['username'])) {
                 </select>
             </div>
 
-            <button type="submit" class="btn btn-primary mt-3">Update Task</button>
+            <button type="submit" class="btn btn-primary mt-3" data-aos="fade">Update Task</button>
         </form>
     </div>
       <!-- To Do List sampai sini  -->
       <hr>
-      <footer class="footer py-5">
+      <footer class="footer py-5" data-aos="fade">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mb-4 mx-auto text-center">
@@ -125,7 +127,14 @@ if (!isset($_SESSION['username'])) {
     </footer>
     </div>
   </main>
-  
+  <!--  Script Tambahan   -->
+  <script>
+  AOS.init({
+    duration: 1000, 
+    once: true, 
+    mirror: false, 
+  });
+  </script>
   <!--   Core JS Files   -->
   <script src="corporate-ui-dashboard-main/assets/js/core/popper.min.js"></script>
   <script src="corporate-ui-dashboard-main/assets/js/core/bootstrap.min.js"></script>

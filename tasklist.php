@@ -20,7 +20,7 @@ $result->execute();
 
 if ($result->rowCount() > 0) {
     while ($row = $result->fetch()) {
-        echo '<tr>';
+        echo '<tr data-aos="fade">';
         echo '<td>' . $row['name_task'] . '</td>';
         echo '<td><input type="checkbox" ' . ($row['task_status'] == 1 ? 'checked' : '') . ' disabled></td>';
 
@@ -37,7 +37,7 @@ if ($result->rowCount() > 0) {
         
         echo '<td>';
         if ($row['task_status'] == 1) {
-            echo '<a href="index.php" class="btn btn-warning" onclick="alert(\'Task already completed\');">Edit</a>';
+            echo '<a href="index.php" class="btn btn-warning" onclick="alert(\'Task already Completed\');">Edit</a>';
         } else {
             echo '<a href="edit.php?id=' . $row['id'] . '" class="btn btn-info">Edit</a>';
         }

@@ -28,6 +28,9 @@ if (!isset($_SESSION['username'])) {
     <link href="corporate-ui-dashboard-main/assets/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="corporate-ui-dashboard-main/assets/css/corporate-ui-dashboard.css?v=1.0.0" rel="stylesheet" />
+    <link href="https://cdn.rawgit.com/michalsnik/aos/2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.rawgit.com/michalsnik/aos/2.3.4/dist/aos.js"></script>
+
 </head>
 
     <!-- Navbar -->
@@ -45,7 +48,7 @@ if (!isset($_SESSION['username'])) {
     </nav>
     <!-- End Navbar -->
     <!-- Main Content -->
-    <div class="container-fluid py-4 px-5">
+    <div class="container-fluid py-4 px-5" data-aos="fade">
       <div class="row">
         <div class="col-md-12">
           <div class="d-md-flex align-items-center mb-3 mx-2">
@@ -59,14 +62,14 @@ if (!isset($_SESSION['username'])) {
       <hr>
       <!-- To Do List di bawah sini-->
       <div class="">
-        <h1>Task List</h1>
-        <div class="d-md-flex align-items-center mb-3 mx-2">
+        <h1 data-aos="fade">Task List</h1>
+        <div class="d-md-flex align-items-center mb-3 mx-2" data-aos="fade">
           <a href="addTask.php">
             <button type="button" class="btn btn-primary">Add Task</button>
           </a>
         </div>
         <table class="table">
-            <thead>
+            <thead data-aos="fade">
                 <tr>
                     <th>Task</th>
                     <th>Done</th>
@@ -84,7 +87,7 @@ if (!isset($_SESSION['username'])) {
     </div>
       <!-- To Do List sampai sini  -->
     <hr>
-    <footer class="footer py-5">
+    <footer class="footer py-5" data-aos="fade">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mb-4 mx-auto text-center">
@@ -119,6 +122,15 @@ if (!isset($_SESSION['username'])) {
     </footer>
     </div>
   </main>
+  <!--  Script Tambahan   -->
+  <script>
+  AOS.init({
+    duration: 1000, 
+    once: true, 
+    mirror: false, 
+  });
+  </script>
+
   <!--   Core JS Files   -->
   <script src="corporate-ui-dashboard-main/assets/js/core/popper.min.js"></script>
   <script src="corporate-ui-dashboard-main/assets/js/core/bootstrap.min.js"></script>
