@@ -34,6 +34,7 @@ if ($result->rowCount() > 0) {
         }
 
         echo '<td style="color: ' . $progress_color . ';">' . $row['progress'] . '</td>';
+        //echo '<td><button class="save-button">Save</button></td>';
         
         echo '<td>';
         if ($row['task_status'] == 1) {

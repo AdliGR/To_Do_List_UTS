@@ -30,7 +30,37 @@ if (!isset($_SESSION['username'])) {
     <link id="pagestyle" href="corporate-ui-dashboard-main/assets/css/corporate-ui-dashboard.css?v=1.0.0" rel="stylesheet" />
     <link href="https://cdn.rawgit.com/michalsnik/aos/2.3.4/dist/aos.css" rel="stylesheet">
     <script src="https://cdn.rawgit.com/michalsnik/aos/2.3.4/dist/aos.js"></script>
+    <style>
+    .fade-in {
+        animation: fadeIn 0.5s ease-in-out;
+    }
 
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .fade-out {
+        animation: fadeOut 0.5s ease-in-out;
+    }
+
+    @keyframes fadeOut {
+        0% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        100% {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+    }
+    </style>
 </head>
 
     <!-- Navbar -->
@@ -67,6 +97,9 @@ if (!isset($_SESSION['username'])) {
           <a href="addTask.php">
             <button type="button" class="btn btn-primary">Add Task</button>
           </a>
+        </div>
+        <div class="mb-3" data-aos="fade">
+          <input type="text" id="searchInput" class="form-control" placeholder="Search by Task Name">
         </div>
         <table class="table">
             <thead data-aos="fade">
@@ -130,7 +163,29 @@ if (!isset($_SESSION['username'])) {
     mirror: false, 
   });
   </script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+      const searchInput = document.getElementById("searchInput");
+      const tableRows = document.querySelectorAll("tbody tr");
 
+      searchInput.addEventListener("input", function() {
+          const keyword = searchInput.value.toLowerCase();
+
+          tableRows.forEach(function(row) {
+              const taskName = row.querySelector("td:first-child").textContent.toLowerCase();
+              if (taskName.includes(keyword)) {
+                  row.classList.remove("fade-out");
+                  row.classList.add("fade-in");
+                  row.style.display = "";
+              } else {
+                  row.classList.remove("fade-in");
+                  row.classList.add("fade-out");
+                  row.style.display = "none";
+              }
+          });
+      });
+  });
+  </script>
   <!--   Core JS Files   -->
   <script src="corporate-ui-dashboard-main/assets/js/core/popper.min.js"></script>
   <script src="corporate-ui-dashboard-main/assets/js/core/bootstrap.min.js"></script>
