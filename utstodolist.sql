@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2023 at 05:57 AM
+-- Generation Time: Oct 23, 2023 at 08:33 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -32,18 +32,8 @@ CREATE TABLE `task` (
   `username` varchar(255) NOT NULL,
   `name_task` varchar(255) NOT NULL,
   `task_status` tinyint(1) NOT NULL DEFAULT 0,
-  `progress` varchar(255) NOT NULL
+  `progress` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `task`
---
-
-INSERT INTO `task` (`id`, `username`, `name_task`, `task_status`, `progress`) VALUES
-(1, 'Shyehan Rafael', 'Menyapu', 1, 'Complete'),
-(2, 'sasa', 'Mengepel', 0, 'Not yet started'),
-(4, 'Shyehan Rafael', 'Beberes', 0, 'Not yet started'),
-(6, 'Shyehan Rafael', 'Mengerjakann PR', 0, 'On Progress');
 
 -- --------------------------------------------------------
 
@@ -64,9 +54,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `username`, `email`, `password`) VALUES
 (3, 'Shyehan Rafael', 'raf@gmail.com', '$2y$10$2JJ7/sqUwZ8nm4mui4UkQeTXXRHBnh.B8Hb1QYJ/reY.MAr0oHJhe'),
-(4, 'sasa', 'sasa@gmail.com', '$2y$10$upLc3N8WNEYIf8OOAfS/v.PATkjzItgdKgmnH87bNVtMtAgC26UsK'),
-(5, 'dirsya', 'dirsya@gmail.com', '$2y$10$7OnyNtcAuIu6ISDYShH93usDwT/2.yyFwYMFW/VV38zKxEgTNPmQa'),
-(6, 'dirsyaa', 'dirsyaa@gmail.com', '$2y$10$IXFCRKVywAZfkfYBHNu9EOY7iVmvUrX4Fk5M7HJbVh/qLJ2vefrwi');
+(4, 'sasa', 'sasa@gmail.com', '$2y$10$upLc3N8WNEYIf8OOAfS/v.PATkjzItgdKgmnH87bNVtMtAgC26UsK');
 
 --
 -- Indexes for dumped tables
@@ -92,13 +80,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `task`
 --
 ALTER TABLE `task`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
