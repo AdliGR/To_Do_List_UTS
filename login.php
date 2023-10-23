@@ -179,7 +179,6 @@
     textIndex = isDeleting ? textIndex - 1 : textIndex + 1;
   }
 
-  // Memulai animasi
   type();
 </script>
 
