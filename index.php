@@ -61,6 +61,15 @@ if (!isset($_SESSION['username'])) {
         }
     }
     </style>
+    <style>
+    tbody tr {
+        display: table-row;
+    }
+    
+    tbody tr[style="display: none"] {
+        display: none;
+    }
+    </style>
 </head>
 
     <!-- Navbar -->
@@ -92,32 +101,48 @@ if (!isset($_SESSION['username'])) {
       <hr>
       <!-- To Do List di bawah sini-->
       <div class="">
-        <h1 data-aos="fade">Task List</h1>
-        <div class="d-md-flex align-items-center mb-3 mx-2" data-aos="fade">
-          <a href="addTask.php">
-            <button type="button" class="btn btn-primary">Add Task</button>
-          </a>
-        </div>
-        <div class="mb-3" data-aos="fade">
-          <input type="text" id="searchInput" class="form-control" placeholder="Search by Task Name">
-        </div>
-        <table class="table">
-            <thead data-aos="fade">
-                <tr>
-                    <th>Task</th>
-                    <th>Done</th>
-                    <th>Progress</th>
-                    <th>Edit Task</th>
-                    <th>Delete Task</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                require('tasklist.php');
-                ?>
-            </tbody>
-        </table>
-    </div>
+          <h1 data-aos="fade">Task List</h1>
+          <div class="d-md-flex align-items-center mb-3 mx-2" data-aos="fade">
+              <a href="addTask.php">
+                  <button type="button" class="btn btn-primary">Add Task</button>
+              </a>
+          </div>
+          <div class="mb-3" data-aos="fade">
+              <input type="text" id="searchInput" class="form-control" placeholder="Search by Task Name">
+          </div>
+          <div class="mb-3" data-aos="fade">
+              <label for="progressFilter">Filter by Progress:</label>
+              <select id="progressFilter" class="form-control">
+                  <option value="all">All</option>
+                  <option value="Not yet started">Not yet started</option>
+                  <option value="On Progress">On Progress</option>
+                  <option value="Complete">Complete</option>
+              </select>
+          </div>
+          <div id="taskListDiv">
+              <table class="table">
+                  <thead data-aos="fade">
+                      <tr>
+                          <th>Task</th>
+                          <th>Done</th>
+                          <th>Progress</th>
+                          <th>Edit Task</th>
+                          <th>Delete Task</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <?php
+                      require('tasklist.php');
+                      ?>
+                  </tbody>
+                  <tfoot>
+                      <tr>
+                          <td colspan="5" id="taskCount">Total Tasks: <span id="count">0</span></td>
+                      </tr>
+                  </tfoot>
+              </table>
+          </div>
+      </div>
       <!-- To Do List sampai sini  -->
     <hr>
     <footer class="footer py-5" data-aos="fade">
@@ -181,6 +206,38 @@ if (!isset($_SESSION['username'])) {
                   row.classList.remove("fade-in");
                   row.classList.add("fade-out");
                   row.style.display = "none";
+              }
+          });
+      });
+  });
+  </script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function () {
+          updateTaskCount();
+      });
+
+      function updateTaskCount() {
+          var taskRows = document.querySelectorAll("tbody tr");
+          var countElement = document.getElementById("count");
+          countElement.textContent = taskRows.length;
+      }
+  </script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const progressFilter = document.getElementById('progressFilter');
+      const tableRows = document.querySelectorAll('tbody tr');
+
+      progressFilter.addEventListener('change', function() {
+          const selectedProgress = progressFilter.value;
+
+          tableRows.forEach(function(row) {
+              const progressCell = row.querySelector('td:nth-child(3)');
+              const progress = progressCell.innerText;
+
+              if (selectedProgress === 'all' || progress === selectedProgress) {
+                  row.style.display = '';
+              } else {
+                  row.style.display = 'none';
               }
           });
       });
